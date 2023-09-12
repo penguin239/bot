@@ -1,0 +1,544 @@
+nohup: 忽略输入
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Unhandled exception on log_save
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/telethon/client/updates.py", line 570, in _dispatch_update
+    await callback(event)
+  File "bot.py", line 60, in log_save
+    name = f'{sender.first_name} {sender.last_name}'
+AttributeError: 'Channel' object has no attribute 'first_name'
+Unhandled exception on log_save
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/telethon/client/updates.py", line 570, in _dispatch_update
+    await callback(event)
+  File "bot.py", line 60, in log_save
+    name = f'{sender.first_name} {sender.last_name}'
+AttributeError: 'Channel' object has no attribute 'first_name'
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Unhandled exception on via_invite_start
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/telethon/client/updates.py", line 570, in _dispatch_update
+    await callback(event)
+  File "bot.py", line 125, in via_invite_start
+    invite_user = utils.invite_check(invite_code, sender)
+  File "/project/pythonProject/bot/utils.py", line 150, in invite_check
+    invite_user = self.get_invite_user(invite_code)
+  File "/project/pythonProject/bot/utils.py", line 141, in get_invite_user
+    result = cursor.fetchone()[0]
+TypeError: 'NoneType' object is not subscriptable
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Unhandled exception on sign
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/telethon/client/updates.py", line 570, in _dispatch_update
+    await callback(event)
+  File "bot.py", line 162, in sign
+    if utils.sign(sender):
+  File "/project/pythonProject/bot/utils.py", line 68, in sign
+    if self.today_already_sign(user_id, local_day):
+  File "/project/pythonProject/bot/utils.py", line 80, in today_already_sign
+    last_sign_time = result['last_sign_time']
+TypeError: 'NoneType' object is not subscriptable
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Unhandled exception on log_save
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/telethon/client/updates.py", line 570, in _dispatch_update
+    await callback(event)
+  File "bot.py", line 60, in log_save
+    name = f'{sender.first_name} {sender.last_name}'
+AttributeError: 'Channel' object has no attribute 'first_name'
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Unhandled exception on sign
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/telethon/client/updates.py", line 570, in _dispatch_update
+    await callback(event)
+  File "bot.py", line 162, in sign
+    if utils.sign(sender):
+  File "/project/pythonProject/bot/utils.py", line 68, in sign
+    if self.today_already_sign(user_id, local_day):
+  File "/project/pythonProject/bot/utils.py", line 80, in today_already_sign
+    last_sign_time = result['last_sign_time']
+TypeError: 'NoneType' object is not subscriptable
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Security error while unpacking a received message: Server replied with a wrong session ID (see FAQ for details)
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: [Errno 104] Connection reset by peer
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Server closed the connection: 0 bytes read on a total of 8 expected bytes
+Unhandled exception on log_save
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/telethon/client/updates.py", line 570, in _dispatch_update
+    await callback(event)
+  File "bot.py", line 60, in log_save
+    name = f'{sender.first_name} {sender.last_name}'
+AttributeError: 'Channel' object has no attribute 'first_name'
