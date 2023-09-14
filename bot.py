@@ -247,9 +247,9 @@ def query_all(sender, keyword, qtype):
     [result.append(item) for item in c if c]
     [result.append(item) for item in d if d]
 
-    if qtype == 'idcard':
-        # 库中只有身份证，没有手机号
-        e = query.query_idcard_by_shunfeng(keyword)
+    if qtype == 'phone':
+        # 库中只有手机号，没有身份证号
+        e = query.query_phone_by_shunfeng(keyword)
         [result.append(item) for item in e if e]
     result_count = len(result)
 

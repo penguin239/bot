@@ -97,8 +97,8 @@ class Query:
 
         return rlist
 
-    def query_idcard_by_shunfeng(self, keyword):
-        sql = f"select name, phone, sheng, shi, qu, address from shunfeng where idcard = '{keyword}'"
+    def query_phone_by_shunfeng(self, keyword):
+        sql = f"select name, phone, sheng, shi, qu, address from shunfeng where phone = '{keyword}'"
         cursor = self.dbObj.cursor()
         cursor.execute(sql)
         result = cursor.fetchall()
