@@ -102,10 +102,12 @@ class Query:
         cursor = self.dbObj.cursor()
         cursor.execute(sql)
         result = cursor.fetchall()
+        print(result)
 
         rlist = []
         dic = {}
         for item in result:
+            print(item)
             dic['name'] = item[0]
             dic['phone'] = item[1]
             dic['sheng'] = item[2]
