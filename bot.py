@@ -17,7 +17,7 @@ bot_token = config.bot_token
 
 utils = Utils()
 query = Query()
-client = TelegramClient('penguin', api_id, api_hash, proxy=(socks.SOCKS5, '127.0.0.1', 7891)).start(bot_token=bot_token)
+client = TelegramClient('penguin', api_id, api_hash, proxy=(socks.SOCKS5, '127.0.0.1', 7890)).start(bot_token=bot_token)
 
 connected_time = time.time()
 utils.prompt(f'机器人启动成功，在{round(connected_time - first_start_time, 2)}s内')
@@ -235,19 +235,19 @@ async def query_phone(event):
     await client.send_message(sender, reply_str, reply_to=message_id)
 
 
-def query_all(sender, keyword):
+def query_all(sender, keyword, qtype):
     result = []
-    a = query.query_phone_by_chezhu(keyword)
-    b = query.query_phone_by_didi(keyword)
-    c = query.query_phone_by_hukou(keyword)
-    d = query.query_phone_by_kf(keyword)
-    e = query.query_phone_by_shunfeng(keyword)
+    a = query.query_by_chezhu(keyword, qtype)
+    b = query.query_by_didi(keyword, qtype)
+    c = query.query_by_hukou(keyword, qtype)
+    d = query.query_by_kf(keyword, qtype)
+    # e = query.query_by_shunfeng(keyword, qtype)
 
     [result.append(item) for item in a if a]
     [result.append(item) for item in b if b]
     [result.append(item) for item in c if c]
     [result.append(item) for item in d if d]
-    [result.append(item) for item in e if e]
+    # [result.append(item) for item in e if e]
     result_count = len(result)
 
     if result_count:
