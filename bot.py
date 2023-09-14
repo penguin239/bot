@@ -17,7 +17,7 @@ bot_token = config.bot_token
 
 utils = Utils()
 query = Query()
-client = TelegramClient('penguin', api_id, api_hash, proxy=(socks.SOCKS5, '127.0.0.1', 7890)).start(bot_token=bot_token)
+client = TelegramClient('penguin', api_id, api_hash, proxy=(socks.SOCKS5, '127.0.0.1', 7891)).start(bot_token=bot_token)
 
 connected_time = time.time()
 utils.prompt(f'机器人启动成功，在{round(connected_time - first_start_time, 2)}s内')
