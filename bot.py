@@ -194,7 +194,7 @@ __每次查询仅需{config.query_per_score}积分__
                                   reply_to=message_id)
         return
 
-    reply_str = query_all(sender, keyword)
+    reply_str = query_all(sender, keyword, qtype='idcard')
     await client.send_message(sender, reply_str, reply_to=message_id)
 
 
@@ -231,7 +231,7 @@ async def query_phone(event):
                                   reply_to=message_id)
         return
 
-    reply_str = query_all(sender, keyword)
+    reply_str = query_all(sender, keyword, qtype='phone')
     await client.send_message(sender, reply_str, reply_to=message_id)
 
 
