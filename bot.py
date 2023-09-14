@@ -187,68 +187,15 @@ async def query_idcard(event):
 __每次查询仅需{config.query_per_score}积分__
 '''
         await event.reply(reply_str)
-    else:
-        keyword = event.pattern_match.groups()[0]
-        if not keyword:
-            await client.send_message(sender, '⚠️请输入正确的身份证号，参考使用说明', buttons=telegraph_button,
-                                      reply_to=message_id)
-        else:
-            result = []
+        return
+    keyword = event.pattern_match.groups()[0]
+    if not keyword:
+        await client.send_message(sender, '⚠️请输入正确的身份证号，参考使用说明', buttons=telegraph_button,
+                                  reply_to=message_id)
+        return
 
-            a = query.query_idcard_by_chezhu(keyword)
-            b = query.query_idcard_by_didi(keyword)
-            c = query.query_idcard_by_hukou(keyword)
-            d = query.query_idcard_by_kf(keyword)
-
-            [result.append(item) for item in a if a]
-            [result.append(item) for item in b if b]
-            [result.append(item) for item in c if c]
-            [result.append(item) for item in d if d]
-            result_count = len(result)
-
-            reply_content_str = ''
-            for item in result:
-                name = item.get('name', None)
-                reply_content_str += f'姓名：{name}\n' if name else ''
-
-                phone = item.get('phone', None)
-                reply_content_str += f'手机号：{phone}\n' if phone else ''
-
-                idcard = item.get('idcard', None)
-                reply_content_str += f'身份证号：{idcard}\n' if idcard else ''
-
-                address = item.get('address', None)
-                reply_content_str += f'地址：{address}\n' if address else ''
-                reply_content_str += '\n'
-
-            flag = True
-            reply_head_str = f'''
-查询到{result_count}个结果
-机器人查询到结果：扣除{config.query_per_score}积分\n
-'''
-            if not result_count:
-                flag = False
-                reply_head_str = '''
-\uD83D\uDE45机器人暂未收录该数据
-
-✨机器人未查询到结果：积分未扣除
-'''
-            reply_str = reply_head_str + reply_content_str
-            # reply_str最长为4096个字符
-
-            if flag:
-                # 如果查询到数据则减去1积分
-                utils.reduce_score(sender, config.query_per_score)
-            if len(reply_str) > 1024:
-                reply_str_t = f'''\uD83C\uDF89查询到{result_count}个结果\n✨机器人查询到结果：扣除{config.query_per_score}积分\n\n__内容过长，避免影响格式，转为文件发送__'''
-
-                file_name = fr'penguinSGK-{utils.generate_invite_code()}'
-                with open(f'reply_data/{file_name}.txt', 'w', encoding='utf8') as reply_file:
-                    reply_file.write(reply_str.replace('*', '').replace('`', ''))
-                await client.send_message(sender, reply_str_t, reply_to=message_id, file=f'reply_data/{file_name}.txt')
-                # await client.send_message(sender, file='reply_data/test.txt')
-            else:
-                await client.send_message(sender, reply_str, reply_to=message_id)
+    reply_str = query_all(sender, keyword)
+    await client.send_message(sender, reply_str, reply_to=message_id)
 
 
 @client.on(events.NewMessage(pattern='(?i)/help'))
@@ -284,8 +231,12 @@ async def query_phone(event):
                                   reply_to=message_id)
         return
 
-    result = []
+    reply_str = query_all(sender, keyword)
+    await client.send_message(sender, reply_str, reply_to=message_id)
 
+
+def query_all(sender, keyword):
+    result = []
     a = query.query_phone_by_chezhu(keyword)
     b = query.query_phone_by_didi(keyword)
     c = query.query_phone_by_hukou(keyword)
@@ -299,8 +250,20 @@ async def query_phone(event):
     [result.append(item) for item in e if e]
     result_count = len(result)
 
+    if result_count:
+        # 查询到内容，减去积分
+        utils.reduce_score(sender, config.query_per_score)
+        return format_reply(result_count, result)
+    return '''
+\uD83D\uDE45机器人暂未收录该数据
+
+✨机器人未查询到结果：积分未扣除
+'''
+
+
+def format_reply(count, result):
     reply_str = f'''
-查询到{result_count}个结果
+查询到{count}个结果
 机器人查询到结果：扣除{config.query_per_score}积分\n
 '''
     for item in result:
@@ -325,15 +288,8 @@ async def query_phone(event):
         address = item.get('address', None)
         reply_str += f'地址：{address}\n' if address else ''
         reply_str += '\n'
-    if not result_count:
-        reply_str = '''
-\uD83D\uDE45机器人暂未收录该数据
 
-✨机器人未查询到结果：积分未扣除
-'''
-    else:
-        utils.reduce_score(sender, config.query_per_score)
-    await client.send_message(sender, reply_str, reply_to=message_id)
+    return reply_str
 
 
 if __name__ == '__main__':
