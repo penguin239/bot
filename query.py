@@ -27,7 +27,7 @@ class Query:
         return result
 
     def query_by_hukou(self, keyword, qtype):
-        sql = f"select name, idc, phone, address from hukou where {qtype} = '{keyword}'"
+        sql = f"select name, idcard, phone, address from hukou where {qtype} = '{keyword}'"
         cursor = self.dbObj.cursor()
         cursor.execute(sql)
         result = cursor.fetchall()
