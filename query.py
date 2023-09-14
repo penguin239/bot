@@ -105,8 +105,8 @@ class Query:
         print(result)
 
         rlist = []
-        dic = {}
         for item in result:
+            dic = {}
             print(item)
             dic['name'] = item[0]
             dic['phone'] = item[1]
