@@ -33,12 +33,9 @@ class Query:
         result = cursor.fetchall()
 
         rlist = []
-        dic = {}
+
         for item in result:
-            dic['name'] = item[0]
-            dic['idcard'] = item[1]
-            dic['phone'] = item[2]
-            dic['address'] = item[3]
+            dic = {'name': item[0], 'idcard': item[1], 'phone': item[2], 'address': item[3]}
 
             rlist.append(dic)
         return rlist
@@ -50,13 +47,9 @@ class Query:
         result = cursor.fetchall()
 
         rlist = []
-        dic = {}
+
         for item in result:
-            dic['name'] = item[0]
-            dic['idcard'] = item[1]
-            dic['phone'] = item[2]
-            dic['mail'] = item[3]
-            dic['address'] = item[4]
+            dic = {'name': item[0], 'idcard': item[1], 'phone': item[2], 'mail': item[3], 'address': item[4]}
 
             rlist.append(dic)
 
@@ -69,11 +62,9 @@ class Query:
         result = cursor.fetchall()
 
         rlist = []
-        dic = {}
+
         for item in result:
-            dic['name'] = item[0]
-            dic['phone'] = item[1]
-            dic['idcard'] = item[2]
+            dic = {'name': item[0], 'phone': item[1], 'idcard': item[2]}
 
             rlist.append(dic)
 
@@ -86,12 +77,9 @@ class Query:
         result = cursor.fetchall()
 
         rlist = []
-        dic = {}
+
         for item in result:
-            dic['name'] = item[0]
-            dic['idcard'] = item[1]
-            dic['address'] = item[2]
-            dic['phone'] = item[3]
+            dic = {'name': item[0], 'idcard': item[1], 'address': item[2], 'phone': item[3]}
 
             rlist.append(dic)
 
@@ -102,21 +90,12 @@ class Query:
         cursor = self.dbObj.cursor()
         cursor.execute(sql)
         result = cursor.fetchall()
-        print(result)
 
         rlist = []
         for item in result:
-            dic = {}
-            print(item)
-            dic['name'] = item[0]
-            dic['phone'] = item[1]
-            dic['sheng'] = item[2]
-            dic['shi'] = item[3]
-            dic['qu'] = item[4]
-            dic['address'] = item[5]
+            dic = {'name': item[0], 'phone': item[1], 'sheng': item[2], 'shi': item[3], 'qu': item[4],
+                   'address': item[5]}
 
-            print(dic)
             rlist.append(dic)
         print(rlist)
         return rlist
-
