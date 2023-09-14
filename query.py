@@ -115,6 +115,7 @@ class Query:
             dic['qu'] = item[4]
             dic['address'] = item[5]
 
+            print(dic)
             rlist.append(dic)
         print(rlist)
         return rlist
