@@ -97,3 +97,23 @@ class Query:
 
         return rlist
 
+    def query_idcard_by_shunfeng(self, keyword):
+        sql = f"select name, phone, sheng, shi, qu, address from shunfeng where idcard = '{keyword}'"
+        cursor = self.dbObj.cursor()
+        cursor.execute(sql)
+        result = cursor.fetchall()
+
+        rlist = []
+        dic = {}
+        for item in result:
+            dic['name'] = item[0]
+            dic['phone'] = item[1]
+            dic['sheng'] = item[2]
+            dic['shi'] = item[3]
+            dic['qu'] = item[4]
+            dic['address'] = item[5]
+
+            rlist.append(dic)
+
+        return rlist
+

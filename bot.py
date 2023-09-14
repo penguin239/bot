@@ -241,13 +241,16 @@ def query_all(sender, keyword, qtype):
     b = query.query_by_didi(keyword, qtype)
     c = query.query_by_hukou(keyword, qtype)
     d = query.query_by_kf(keyword, qtype)
-    # e = query.query_by_shunfeng(keyword, qtype)
 
     [result.append(item) for item in a if a]
     [result.append(item) for item in b if b]
     [result.append(item) for item in c if c]
     [result.append(item) for item in d if d]
-    # [result.append(item) for item in e if e]
+
+    if qtype == 'idcard':
+        # 库中只有身份证，没有手机号
+        e = query.query_idcard_by_shunfeng(keyword)
+        [result.append(item) for item in e if e]
     result_count = len(result)
 
     if result_count:
