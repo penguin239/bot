@@ -97,5 +97,4 @@ class Query:
                    'address': item[5]}
 
             rlist.append(dic)
-        print(rlist)
         return rlist
