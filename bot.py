@@ -239,9 +239,17 @@ async def query_phone(event):
 async def query_uid(event):
     sender = event.sender_id
     keyword = event.pattern_match.groups()[0]
-    print(keyword)
 
-    result = query.query_by_bilibili(keyword, 'uid')
+    if not utils.check_score(sender):
+        reply_str = f'''
+    \uD83D\uDC4B您的积分不足！
+
+    __每次查询仅需{config.query_per_score}积分__
+    '''
+        await event.reply(reply_str)
+        return
+
+    result = [query.query_by_bilibili(keyword, 'uid')]
     result_len = len(result)
 
     if result_len:
