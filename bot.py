@@ -236,7 +236,7 @@ async def query_phone(event):
 
 
 @client.on(events.NewMessage(pattern='(?i)/bili (\d*)'))
-def query_uid(event):
+async def query_uid(event):
     sender = event.sender_id
     keyword = event.pattern_match.groups()[0]
     print(keyword)
@@ -246,7 +246,9 @@ def query_uid(event):
 
     if result_len:
         utils.reduce_score(sender, config.query_per_score)
-        return format_reply(result_len, result)
+        reply_str = format_reply(result_len, result)
+
+        await client.send_message(sender, message=reply_str, reply_to=sender)
     return '''
 \uD83D\uDE45机器人暂未收录该数据
 
