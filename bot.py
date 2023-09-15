@@ -256,14 +256,18 @@ async def query_uid(event):
         return
 
     result = query.query_by_bilibili(keyword, 'uid')
+    print(result)
     result_len = len(result)
+    print(result_len)
 
     if result_len:
+        print(1)
         utils.reduce_score(sender, config.query_per_score)
         reply_str = format_reply(result_len, result)
 
         await client.send_message(sender, reply_str, reply_to=message_id)
         return
+    print('未查询到')
     return '''
 \uD83D\uDE45机器人暂未收录该数据
 
