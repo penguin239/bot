@@ -237,7 +237,7 @@ async def query_phone(event):
 
 @client.on(events.NewMessage(pattern='(?i)/bili (\d*)'))
 def query_uid(event):
-    sender = event.get_sender
+    sender = event.sender_id
     keyword = event.pattern_match.groups()[0]
     print(keyword)
 
