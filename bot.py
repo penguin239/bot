@@ -301,6 +301,7 @@ def format_reply(count, result):
 机器人查询到结果：扣除{config.query_per_score}积分\n
 '''
     for item in result:
+        print(item)
         name = item.get('name', None)
         reply_str += f'姓名：{name}\n' if name else ''
 
