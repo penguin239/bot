@@ -256,9 +256,7 @@ async def query_uid(event):
         return
 
     result = query.query_by_bilibili(keyword, 'uid')
-    print(result)
     result_len = len(result)
-    print(result_len)
 
     if result_len:
         print(1)
@@ -267,12 +265,12 @@ async def query_uid(event):
 
         await client.send_message(sender, reply_str, reply_to=message_id)
         return
-    print('未查询到')
-    return '''
+    reply_str = '''
 \uD83D\uDE45机器人暂未收录该数据
 
 ✨机器人未查询到结果：积分未扣除
 '''
+    await client.send_message(sender, reply_str, reply_to=message_id)
 
 
 def query_all(sender, keyword, qtype):
