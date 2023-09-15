@@ -249,14 +249,12 @@ async def query_uid(event):
         await event.reply(reply_str)
         return
 
-    result = [query.query_by_bilibili(keyword, 'uid')]
-    print(result)
+    result = query.query_by_bilibili(keyword, 'uid')
     result_len = len(result)
 
     if result_len:
         utils.reduce_score(sender, config.query_per_score)
         reply_str = format_reply(result_len, result)
-        print(reply_str)
 
         await client.send_message(sender, message=reply_str, reply_to=sender)
     return '''
