@@ -241,6 +241,11 @@ async def query_uid(event):
     message_id = event.message.id
     keyword = event.pattern_match.groups()[0]
 
+    if not keyword:
+        await client.send_message(sender, '⚠️请输入正确的Uid，参考使用说明', buttons=telegraph_button,
+                                  reply_to=message_id)
+        return
+
     if not utils.check_score(sender):
         reply_str = f'''
     \uD83D\uDC4B您的积分不足！
