@@ -255,6 +255,11 @@ async def query_uid(event):
     if result_len:
         utils.reduce_score(sender, config.query_per_score)
         reply_str = format_reply(result_len, result)
+        reply_str = '''查询到1个结果
+机器人查询到结果：扣除1积分
+
+手机号：15729081673
+Bilibili Uid：885271993'''
 
         await client.send_message(sender, reply_str, reply_to=sender)
     return '''
