@@ -97,4 +97,17 @@ class Query:
                    'address': item[5]}
 
             rlist.append(dic)
+        return
+
+    def query_by_bilibili(self, keyword, qtype):
+        sql = f"select uid, phone from bilibili where {qtype} = '{keyword}'"
+        cursor = self.dbObj.cursor()
+        cursor.execute(sql)
+        result = cursor.fetchall()
+
+        rlist = []
+        for item in result:
+            dic = {'uid': item[0], 'phone': item[1]}
+
+            rlist.append(dic)
         return rlist

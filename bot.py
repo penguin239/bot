@@ -235,6 +235,24 @@ async def query_phone(event):
     await client.send_message(sender, reply_str, reply_to=message_id)
 
 
+@client.on(events.NewMessage(pattern='(?i)/bili (\d*)'))
+def query_uid(event):
+    sender = event.get_sender
+    keyword = event.pattern_match.groups()[0]
+
+    result = query.query_by_bilibili(keyword, 'uid')
+    result_len = len(result)
+
+    if result_len:
+        utils.reduce_score(sender, config.query_per_score)
+        return format_reply(result_len, result)
+    return '''
+\uD83D\uDE45机器人暂未收录该数据
+
+✨机器人未查询到结果：积分未扣除
+'''
+
+
 def query_all(sender, keyword, qtype):
     result = []
     a = query.query_by_chezhu(keyword, qtype)
@@ -250,7 +268,9 @@ def query_all(sender, keyword, qtype):
     if qtype == 'phone':
         # 库中只有手机号，没有身份证号
         e = query.query_phone_by_shunfeng(keyword)
+        f = query.query_by_bilibili(keyword, 'phone')
         [result.append(item) for item in e if e]
+        [result.append(item) for item in f if f]
     result_count = len(result)
 
     if result_count:
@@ -290,6 +310,10 @@ def format_reply(count, result):
 
         address = item.get('address', None)
         reply_str += f'地址：{address}\n' if address else ''
+        reply_str += '\n'
+
+        uid = item.get('uid', None)
+        reply_str += f'Bilibili Uid：{uid}\n' if uid else ''
         reply_str += '\n'
 
     return reply_str
