@@ -238,6 +238,7 @@ async def query_phone(event):
 @client.on(events.NewMessage(pattern='(?i)/bili (\d*)'))
 async def query_uid(event):
     sender = event.sender_id
+    message_id = event.message.id
     keyword = event.pattern_match.groups()[0]
 
     if not utils.check_score(sender):
@@ -255,13 +256,8 @@ async def query_uid(event):
     if result_len:
         utils.reduce_score(sender, config.query_per_score)
         reply_str = format_reply(result_len, result)
-        reply_str = '''查询到1个结果
-机器人查询到结果：扣除1积分
 
-手机号：15729081673
-Bilibili Uid：885271993'''
-
-        await client.send_message(sender, reply_str, reply_to=sender)
+        await client.send_message(sender, reply_str, reply_to=message_id)
     return '''
 \uD83D\uDE45机器人暂未收录该数据
 
