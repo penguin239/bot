@@ -279,7 +279,9 @@ def query_all(sender, keyword, qtype):
     if qtype == 'phone':
         # 库中只有手机号，没有身份证号
         e = query.query_phone_by_shunfeng(keyword)
+        print(e)
         f = query.query_by_bilibili(keyword, 'phone')
+        print(f)
         [result.append(item) for item in e if e]
         [result.append(item) for item in f if f]
     result_count = len(result)
