@@ -97,7 +97,7 @@ class Query:
                    'address': item[5]}
 
             rlist.append(dic)
-        return
+        return rlist
 
     def query_by_bilibili(self, keyword, qtype):
         sql = f"select uid, phone from bilibili where {qtype} = '{keyword}'"
