@@ -263,6 +263,7 @@ async def query_uid(event):
         reply_str = format_reply(result_len, result)
 
         await client.send_message(sender, reply_str, reply_to=message_id)
+        return
     return '''
 \uD83D\uDE45机器人暂未收录该数据
 
