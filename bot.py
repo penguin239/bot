@@ -255,9 +255,8 @@ async def query_uid(event):
     if result_len:
         utils.reduce_score(sender, config.query_per_score)
         reply_str = format_reply(result_len, result)
-        print(reply_str)
 
-        await client.send_message(sender, message=reply_str, reply_to=sender)
+        await client.send_message(sender, reply_str, reply_to=sender)
     return '''
 \uD83D\uDE45机器人暂未收录该数据
 
@@ -302,7 +301,6 @@ def format_reply(count, result):
 机器人查询到结果：扣除{config.query_per_score}积分\n
 '''
     for item in result:
-        print(item)
         name = item.get('name', None)
         reply_str += f'姓名：{name}\n' if name else ''
 
@@ -323,7 +321,6 @@ def format_reply(count, result):
 
         address = item.get('address', None)
         reply_str += f'地址：{address}\n' if address else ''
-        reply_str += '\n'
 
         uid = item.get('uid', None)
         reply_str += f'Bilibili Uid：{uid}\n' if uid else ''
