@@ -259,7 +259,6 @@ async def query_uid(event):
     result_len = len(result)
 
     if result_len:
-        print(1)
         utils.reduce_score(sender, config.query_per_score)
         reply_str = format_reply(result_len, result)
 
