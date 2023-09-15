@@ -255,6 +255,7 @@ async def query_uid(event):
     if result_len:
         utils.reduce_score(sender, config.query_per_score)
         reply_str = format_reply(result_len, result)
+        print(reply_str)
 
         await client.send_message(sender, message=reply_str, reply_to=sender)
     return '''
@@ -279,9 +280,7 @@ def query_all(sender, keyword, qtype):
     if qtype == 'phone':
         # 库中只有手机号，没有身份证号
         e = query.query_phone_by_shunfeng(keyword)
-        print(e)
         f = query.query_by_bilibili(keyword, 'phone')
-        print(f)
         [result.append(item) for item in e if e]
         [result.append(item) for item in f if f]
     result_count = len(result)
