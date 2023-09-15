@@ -234,6 +234,7 @@ async def query_phone(event):
     reply_str = query_all(sender, keyword, qtype='phone')
     await client.send_message(sender, reply_str, reply_to=message_id)
 
+
 @client.on(events.NewMessage(pattern='(?i)/bili (\d*)'))
 def query_uid(event):
     sender = event.get_sender
