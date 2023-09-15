@@ -239,6 +239,7 @@ async def query_phone(event):
 def query_uid(event):
     sender = event.get_sender
     keyword = event.pattern_match.groups()[0]
+    print(keyword)
 
     result = query.query_by_bilibili(keyword, 'uid')
     result_len = len(result)
