@@ -292,7 +292,7 @@ async def query_qq(event):
         await event.reply(reply_str)
         return
 
-    result = query.query_qq(keyword)
+    result = query.query_qq(keyword, 'username')
     result_len = len(result)
 
     if result_len:
@@ -307,7 +307,6 @@ async def query_qq(event):
 ✨机器人未查询到结果：积分未扣除
 '''
     await client.send_message(sender, reply_str, reply_to=message_id)
-
 
 
 def query_all(sender, keyword, qtype):
@@ -326,8 +325,10 @@ def query_all(sender, keyword, qtype):
         # 库中只有手机号，没有身份证号
         e = query.query_phone_by_shunfeng(keyword)
         f = query.query_by_bilibili(keyword, 'phone')
+        g = query.query_qq(keyword, 'mobile')
         [result.append(item) for item in e if e]
         [result.append(item) for item in f if f]
+        [result.append(item) for item in g if g]
     result_count = len(result)
 
     if result_count:
@@ -349,6 +350,9 @@ def format_reply(count, result):
     for item in result:
         name = item.get('name', None)
         reply_str += f'姓名：{name}\n' if name else ''
+
+        qq = item.get('qq', None)
+        reply_str += f'QQ：{qq}\n' if qq else ''
 
         phone = item.get('phone', None)
         reply_str += f'手机号：{phone}\n' if phone else ''
