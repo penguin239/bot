@@ -345,7 +345,7 @@ def query_all(sender, keyword, qtype):
 def format_reply(count, result):
     reply_str = f'''
 查询到{count}个结果
-机器人查询到结果：扣除{config.query_per_score}积分\n
+机器人查询到结果：免费查询，不扣除积分！\n
 '''
     for item in result:
         name = item.get('name', None)

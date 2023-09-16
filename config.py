@@ -20,5 +20,5 @@ invite_add_score = 5
 # 新用户赠送积分
 new_user_score = 10
 # 查询消耗积分
-query_per_score = 1
+query_per_score = 0
 
