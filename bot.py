@@ -309,6 +309,7 @@ async def query_qq(event):
     await client.send_message(sender, reply_str, reply_to=message_id)
 
 
+
 def query_all(sender, keyword, qtype):
     result = []
     a = query.query_by_chezhu(keyword, qtype)

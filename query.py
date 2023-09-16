@@ -124,3 +124,4 @@ class Query:
 
             rlist.append(dic)
         return rlist
+
