@@ -111,3 +111,16 @@ class Query:
 
             rlist.append(dic)
         return rlist
+
+    def query_qq(self, keyword):
+        sql = f"select username, mobile from 8eqq where username = '{keyword}'"
+        cursor = self.dbObj.cursor()
+        cursor.execute(sql)
+        result = cursor.fetchall()
+
+        rlist = []
+        for item in result:
+            dic = {'qq': item[0], 'phone': item[1]}
+
+            rlist.append(dic)
+        return rlist

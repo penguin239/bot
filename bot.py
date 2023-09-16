@@ -272,6 +272,43 @@ async def query_uid(event):
     await client.send_message(sender, reply_str, reply_to=message_id)
 
 
+@client.on(events.NewMessage(pattern='(?i)/qq (\d*)'))
+async def query_qq(event):
+    sender = event.sender_id
+    message_id = event.message.id
+    keyword = event.pattern_match.groups()[0]
+
+    if not keyword:
+        await client.send_message(sender, '⚠️请输入正确的QQ号码，参考使用说明', buttons=telegraph_button,
+                                  reply_to=message_id)
+        return
+
+    if not utils.check_score(sender):
+        reply_str = f'''
+    \uD83D\uDC4B您的积分不足！
+
+    __每次查询仅需{config.query_per_score}积分__
+    '''
+        await event.reply(reply_str)
+        return
+
+    result = query.query_qq(keyword)
+    result_len = len(result)
+
+    if result_len:
+        utils.reduce_score(sender, config.query_per_score)
+        reply_str = format_reply(result_len, result)
+
+        await client.send_message(sender, reply_str, reply_to=message_id)
+        return
+    reply_str = '''
+\uD83D\uDE45机器人暂未收录该数据
+
+✨机器人未查询到结果：积分未扣除
+'''
+    await client.send_message(sender, reply_str, reply_to=message_id)
+
+
 def query_all(sender, keyword, qtype):
     result = []
     a = query.query_by_chezhu(keyword, qtype)
