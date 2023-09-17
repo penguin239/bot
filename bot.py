@@ -34,6 +34,9 @@ custom_buttons = [
         Button.url('社工库使用教程', config.help_telegraph_url)
     ]
 ]
+channel_button = [
+    Button.url('加入我们的频道', config.channel_url),
+]
 telegraph_button = [
     [
         Button.url('社工库使用教程', config.help_telegraph_url)
@@ -41,14 +44,14 @@ telegraph_button = [
 ]
 
 
-# async def ismember(sender):
-#     entity = await client.get_entity(config.channel_name)
-#     users = await client.get_participants(entity)
-#
-#     for user in users:
-#         if user.id == sender:
-#             return True
-#     return False
+async def ismember(sender):
+    entity = await client.get_entity(config.channel_name)
+    users = await client.get_participants(entity)
+
+    for user in users:
+        if user.id == sender:
+            return True
+    return False
 
 
 @client.on(events.NewMessage(pattern='.*'))
@@ -82,6 +85,9 @@ async def log_save(event):
 @client.on(events.NewMessage(pattern='(?i)/start'))
 async def start_bot(event):
     sender = event.sender_id
+    if not ismember(sender):
+        await client.send_message(sender, message='⚠️请关注频道后再使用 /start 开始', buttons=channel_button)
+        return
     user_info = await event.get_sender()
 
     result = utils.query_user_info(sender)
@@ -121,6 +127,9 @@ async def start_bot(event):
 @client.on(events.NewMessage(pattern='(?i)/start (.*)?'))
 async def via_invite_start(event):
     sender = event.sender_id
+    if not ismember(sender):
+        await client.send_message(sender, message='⚠️请关注频道后再使用 /start 开始', buttons=channel_button)
+        return
     invite_code = event.pattern_match.groups()[0]
     invite_user = utils.invite_check(invite_code, sender)
 
