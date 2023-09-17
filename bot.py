@@ -85,9 +85,6 @@ async def log_save(event):
 @client.on(events.NewMessage(pattern='(?i)/start'))
 async def start_bot(event):
     sender = event.sender_id
-    if not ismember(sender):
-        await client.send_message(sender, message='⚠️请关注频道后再使用 /start 开始', buttons=channel_button)
-        return
     user_info = await event.get_sender()
 
     result = utils.query_user_info(sender)
@@ -127,9 +124,6 @@ async def start_bot(event):
 @client.on(events.NewMessage(pattern='(?i)/start (.*)?'))
 async def via_invite_start(event):
     sender = event.sender_id
-    if not ismember(sender):
-        await client.send_message(sender, message='⚠️请关注频道后再使用 /start 开始', buttons=channel_button)
-        return
     invite_code = event.pattern_match.groups()[0]
     invite_user = utils.invite_check(invite_code, sender)
 
