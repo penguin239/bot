@@ -123,6 +123,7 @@ async def start_bot(event):
 
     await client.send_message(sender, reply_str, buttons=custom_buttons)
 
+
 @client.on(events.NewMessage(pattern='(?i)/start (.*)?'))
 async def via_invite_start(event):
     sender = event.sender_id
