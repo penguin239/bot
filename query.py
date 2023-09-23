@@ -3,6 +3,7 @@ import pymysql
 import config
 
 
+
 class Query:
     def __init__(self):
         self.dbObj = pymysql.connect(
