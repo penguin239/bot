@@ -56,6 +56,7 @@ async def ismember(sender):
     return False
 
 
+
 @client.on(events.NewMessage(pattern='.*'))
 async def log_save(event):
     current_time = utils.get_current_time()
