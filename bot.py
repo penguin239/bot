@@ -1,3 +1,5 @@
+import re
+
 from telethon import TelegramClient, events
 from telethon import Button
 from query import Query
@@ -82,6 +84,33 @@ async def log_save(event):
         logfile.write('\n')
 
 
+@client.on(events.NewMessage(pattern='^(?!/)(.*)'))
+async def check_command(event):
+    keyword = event.pattern_match.groups()[0]
+
+    qtype = None
+    if re.findall(r'\d{18}|\d{17}X|\d{17}x', keyword) and len(keyword) == 18:
+        # 检测为身份证号
+        qtype = 'idcard'
+    elif len(keyword) == 11 and int(keyword) >= 13000000000:
+        # 检测为手机号
+        qtype = 'phone'
+    elif 5 <= len(keyword) < 11 and re.findall(r'\d+', keyword):
+        # 检测为QQ号
+        qtype = 'qq'
+
+    if not qtype:
+        await event.reply('⚠️您输入的格式有误，请检查后再输入。')
+        return
+
+    if qtype == 'idcard':
+        await query_idcard(event, keyword)
+    elif qtype == 'phone':
+        await query_phone(event, keyword)
+    elif qtype == 'qq':
+        await query_qq(event, keyword)
+
+
 @client.on(events.NewMessage(pattern='(?i)/start'))
 async def start_bot(event):
     sender = event.sender_id
@@ -105,7 +134,7 @@ async def start_bot(event):
 
 ✍请发送任意关键词查询
 
-- 机器人使用一次仅消耗1积分，未查询到不会扣除积分
+- 机器人免费使用，不消耗积分~
 - 邀请一名奖励5积分，每日签到奖励3积分，新用户赠送10积分
 - 每人都有一次被邀请的机会，即使你正在使用它！
 
@@ -178,8 +207,7 @@ async def sign(event):
         await client.send_message(sender, reply_str)
 
 
-@client.on(events.NewMessage(pattern='(?i)/idcard (\d{18}|\d{17}X)?'))
-async def query_idcard(event):
+async def query_idcard(event, keyword):
     sender = event.sender_id
     message_id = event.message.id
 
@@ -190,11 +218,6 @@ async def query_idcard(event):
 __每次查询仅需{config.query_per_score}积分__
 '''
         await event.reply(reply_str)
-        return
-    keyword = event.pattern_match.groups()[0]
-    if not keyword:
-        await client.send_message(sender, '⚠️请输入正确的身份证号，参考使用说明', buttons=telegraph_button,
-                                  reply_to=message_id)
         return
 
     reply_str = query_all(sender, keyword, qtype='idcard')
@@ -214,24 +237,17 @@ __详细使用说明见下方按钮链接__
     await client.send_message(event.sender_id, reply_str, buttons=telegraph_button)
 
 
-@client.on(events.NewMessage(pattern='(?i)/phone (\d{11})?'))
-async def query_phone(event):
+async def query_phone(event, keyword):
     sender = event.sender_id
     message_id = event.message.id
 
     if not utils.check_score(sender):
         reply_str = f'''
-    \uD83D\uDC4B您的积分不足！
+\uD83D\uDC4B您的积分不足！
 
-    __每次查询仅需{config.query_per_score}积分__
-    '''
+__每次查询仅需{config.query_per_score}积分__
+'''
         await event.reply(reply_str)
-        return
-    keyword = event.pattern_match.groups()[0]
-
-    if not keyword:
-        await client.send_message(sender, '⚠️请输入正确的手机号，参考使用说明', buttons=telegraph_button,
-                                  reply_to=message_id)
         return
 
     reply_str = query_all(sender, keyword, qtype='phone')
@@ -275,27 +291,48 @@ async def query_uid(event):
     await client.send_message(sender, reply_str, reply_to=message_id)
 
 
-@client.on(events.NewMessage(pattern='(?i)/qq (\d*)'))
-async def query_qq(event):
+async def query_qq(event, keyword):
+    sender = event.sender_id
+    message_id = event.message.id
+
+    if not utils.check_score(sender):
+        reply_str = f'''
+\uD83D\uDC4B您的积分不足！
+
+__每次查询仅需{config.query_per_score}积分__
+'''
+        await event.reply(reply_str)
+        return
+
+    result = query.query_qq(keyword, 'username')
+    result_len = len(result)
+
+    if result_len:
+        utils.reduce_score(sender, config.query_per_score)
+        reply_str = format_reply(result_len, result)
+
+        await client.send_message(sender, reply_str, reply_to=message_id)
+        return
+    reply_str = '''
+\uD83D\uDE45机器人暂未收录该数据
+
+✨机器人未查询到结果：积分未扣除
+'''
+    await client.send_message(sender, reply_str, reply_to=message_id)
+
+
+@client.on(events.NewMessage(pattern='(?i)/lol (.*)'))
+async def query_lol_bind(event):
     sender = event.sender_id
     message_id = event.message.id
     keyword = event.pattern_match.groups()[0]
 
     if not keyword:
-        await client.send_message(sender, '⚠️请输入正确的QQ号码，参考使用说明', buttons=telegraph_button,
+        await client.send_message(sender, '⚠️请输入正确的游戏ID，参考使用说明', buttons=telegraph_button,
                                   reply_to=message_id)
         return
 
-    if not utils.check_score(sender):
-        reply_str = f'''
-    \uD83D\uDC4B您的积分不足！
-
-    __每次查询仅需{config.query_per_score}积分__
-    '''
-        await event.reply(reply_str)
-        return
-
-    result = query.query_qq(keyword, 'username')
+    result = query.query_lol(keyword)
     result_len = len(result)
 
     if result_len:
@@ -318,11 +355,15 @@ def query_all(sender, keyword, qtype):
     b = query.query_by_didi(keyword, qtype)
     c = query.query_by_hukou(keyword, qtype)
     d = query.query_by_kf(keyword, qtype)
+    z = query.query_by_3ys(keyword, qtype)
+    zj1100 = query.query_by_zj1100w(keyword, qtype)
 
     [result.append(item) for item in a if a]
     [result.append(item) for item in b if b]
     [result.append(item) for item in c if c]
     [result.append(item) for item in d if d]
+    [result.append(item) for item in z if z]
+    [result.append(item) for item in zj1100 if zj1100]
 
     if qtype == 'phone':
         # 库中只有手机号，没有身份证号
@@ -332,6 +373,10 @@ def query_all(sender, keyword, qtype):
         [result.append(item) for item in e if e]
         [result.append(item) for item in f if f]
         [result.append(item) for item in g if g]
+    elif qtype == 'idcard':
+        # 库中只有身份证号，没有手机号
+        nameia = query.query_idcard_by_nameia(keyword)
+        [result.append(item) for item in nameia if nameia]
     result_count = len(result)
 
     if result_count:
@@ -349,34 +394,57 @@ def format_reply(count, result):
     reply_str = f'''
 查询到{count}个结果
 机器人查询到结果：免费查询，不扣除积分！\n
+点击查询结果可直接复制
 '''
     for item in result:
         name = item.get('name', None)
-        reply_str += f'姓名：{name}\n' if name else ''
+        reply_str += f'姓名：`{name}`\n' if name else ''
+
+        parent = item.get('parent', None)
+        reply_str += f'家长姓名：`{parent}`\n' if parent else ''
 
         qq = item.get('qq', None)
-        reply_str += f'QQ：{qq}\n' if qq else ''
+        reply_str += f'QQ：`{qq}`\n' if qq else ''
 
         phone = item.get('phone', None)
-        reply_str += f'手机号：{phone}\n' if phone else ''
+        reply_str += f'手机号：`{phone}`\n' if phone else ''
 
         idcard = item.get('idcard', None)
-        reply_str += f'身份证号：{idcard}\n' if idcard else ''
+        reply_str += f'身份证号：`{idcard}`\n' if idcard else ''
 
         sheng = item.get('sheng', None)
-        reply_str += f'省：{sheng}\n' if sheng else ''
+        reply_str += f'省：`{sheng}`\n' if sheng else ''
 
         shi = item.get('shi', None)
-        reply_str += f'市：{shi}\n' if shi else ''
+        reply_str += f'市：`{shi}`\n' if shi else ''
 
         qu = item.get('qu', None)
-        reply_str += f'区：{qu}\n' if qu else ''
+        reply_str += f'区：`{qu}`\n' if qu else ''
 
         address = item.get('address', None)
-        reply_str += f'地址：{address}\n' if address else ''
+        reply_str += f'地址：`{address}`\n' if address else ''
+
+        address1 = item.get('address1', None)
+        reply_str += f'地址1：`{address1}`\n' if address1 else ''
+
+        address2 = item.get('address2', None)
+        reply_str += f'地址2：`{address2}`\n' if address2 else ''
 
         uid = item.get('uid', None)
-        reply_str += f'Bilibili Uid：{uid}\n' if uid else ''
+        reply_str += f'Bilibili Uid：`{uid}`\n' if uid else ''
+
+        lol_name = item.get('lol_name', None)
+        reply_str += f'游戏ID：`{lol_name}`\n' if lol_name else ''
+
+        area = item.get('area', None)
+        reply_str += f'大区：`{area}`\n' if area else ''
+
+        grade = item.get('grade', None)
+        reply_str += f'年级：`{grade}`\n' if grade else ''
+
+        school = item.get('school', None)
+        reply_str += f'学校：`{school}`\n' if school else ''
+
         reply_str += '\n'
 
     return reply_str
