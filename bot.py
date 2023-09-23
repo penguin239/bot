@@ -11,7 +11,6 @@ import asyncio
 import socks
 import config
 
-
 first_start_time = time.time()
 
 api_id = config.api_id
