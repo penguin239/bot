@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
-api_id = 24983664
-api_hash = '131beb84b8b3a16f5fe987001e7efca3'
-bot_token = '6369207221:AAHhnuzNrQT3zpv8SiEwAlpezSt3HozvAbY'
+api_id = 0
+api_hash = ''
+bot_token = ''
 
 telebot_database = 'telebot'
 data_database = 'data'
