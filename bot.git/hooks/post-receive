@@ -1,3 +1,0 @@
-#!/bin/bash
-
-git --word-tree=/project/pythonProject/bot --git-dir=/project/pythonProject/bot/bot.git checkout -f
