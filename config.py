@@ -6,12 +6,12 @@ bot_token = ''
 telebot_database = 'telebot'
 data_database = 'data'
 
-channel_name = 'penguinSGK'
-channel_id = -1001962653067
-bot_url = 'https://t.me/qcc01_bot'
-channel_url = 'https://t.me/penguinSGK'
-consultant_url = 'https://t.me/flypenguin6'
-help_telegraph_url = 'https://telegra.ph/penguinSGKbot-09-08'
+channel_name = ''
+channel_id = 
+bot_url = ''
+channel_url = ''
+consultant_url = ''
+help_telegraph_url = ''
 
 # 签到获得积分
 sign_add_score = 3
