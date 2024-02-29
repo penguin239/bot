@@ -33,7 +33,7 @@ custom_buttons = [
         Button.url('联系作者', config.consultant_url)
     ],
     [
-        Button.url('社工库使用教程', config.help_telegraph_url)
+        Button.url('使用教程', config.help_telegraph_url)
     ]
 ]
 channel_button = [
@@ -41,7 +41,7 @@ channel_button = [
 ]
 telegraph_button = [
     [
-        Button.url('社工库使用教程', config.help_telegraph_url)
+        Button.url('使用教程', config.help_telegraph_url)
     ]
 ]
 
@@ -91,13 +91,10 @@ async def check_command(event):
 
     qtype = None
     if re.findall(r'\d{18}|\d{17}X|\d{17}x', keyword) and len(keyword) == 18:
-        # 检测为身份证号
         qtype = 'idcard'
     elif len(keyword) == 11 and int(keyword) >= 13000000000:
-        # 检测为手机号
         qtype = 'phone'
     elif 5 <= len(keyword) < 11 and re.findall(r'\d+', keyword):
-        # 检测为QQ号
         qtype = 'qq'
 
     if not qtype:
@@ -131,7 +128,7 @@ async def start_bot(event):
     # account = user_info.username
 
     reply_str = f'''
-\uD83C\uDF89您好 {user_name}，欢迎使用penguin社工库机器人！
+\uD83C\uDF89您好 {user_name}，欢迎使用penguin机器人！
 
 ✍请发送任意关键词查询
 
@@ -230,9 +227,8 @@ async def help_and_support(event):
     reply_str = '''
 \uD83D\uDC96#帮助
 
-本机器人可查询到：身份户籍、开房记录、电话机主、学籍信息、常用密码、QQ/手机/微博/LOL绑定，以及身份证，户籍地址等公开信息。
+本机器人可查询到公开信息。
 
-常用查询关键词：QQ、手机号、身份证号、用户名、邮箱、姓名
 __详细使用说明见下方按钮链接__
 '''
     await client.send_message(event.sender_id, reply_str, buttons=telegraph_button)
@@ -367,7 +363,6 @@ def query_all(sender, keyword, qtype):
     [result.append(item) for item in zj1100 if zj1100]
 
     if qtype == 'phone':
-        # 库中只有手机号，没有身份证号
         e = query.query_phone_by_shunfeng(keyword)
         f = query.query_by_bilibili(keyword, 'phone')
         g = query.query_qq(keyword, 'mobile')
@@ -375,7 +370,6 @@ def query_all(sender, keyword, qtype):
         [result.append(item) for item in f if f]
         [result.append(item) for item in g if g]
     elif qtype == 'idcard':
-        # 库中只有身份证号，没有手机号
         nameia = query.query_idcard_by_nameia(keyword)
         [result.append(item) for item in nameia if nameia]
     result_count = len(result)
