@@ -3,8 +3,8 @@ api_id = 0
 api_hash = ''
 bot_token = ''
 
-telebot_database = 'telebot'
-data_database = 'data'
+telebot_database = '存放用户的数据库'
+data_database = '存放数据的数据库'
 
 channel_name = ''
 channel_id = 
