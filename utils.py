@@ -11,8 +11,8 @@ class Utils:
         self.dbObj = pymysql.connect(
             host='127.0.0.1',
             port=3306,
-            user='root',
-            passwd='root',
+            user=config.db_username,
+            passwd=config.db_password,
             db=config.telebot_database,
             autocommit=True
         )
