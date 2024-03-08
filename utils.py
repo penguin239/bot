@@ -144,8 +144,6 @@ class Utils:
         return int(result)
 
     def invite_check(self, invite_code, sender):
-        #                     ^^^^^     ^^^^^^
-        #                     邀请者    被邀请者
         # 用户邀请
         invite_user = self.get_invite_user(invite_code)
 
