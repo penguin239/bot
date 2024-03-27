@@ -1,4 +1,3 @@
-# Telegram Bot
+### Telegram Bot
 
-my telegram bot via telethon
-                feat.penguin
+use telethon
