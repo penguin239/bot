@@ -167,7 +167,6 @@ def it_home_spider():
 
             img_url = item.find_previous_sibling('a', class_='img').find('img')['data-original']
             jpg_url = img_url.split('?')[0]
-            res = requests.get(jpg_url, headers=conf.headers).content
 
             reply_channel_msg = f'''
 **{title}**
@@ -181,7 +180,8 @@ def it_home_spider():
             '''
 
             asyncio.run_coroutine_threadsafe(
-                client.send_message(conf.channel, reply_channel_msg, file=res,
+                # file参数可接受一个外部URL
+                client.send_message(conf.channel, reply_channel_msg, file=jpg_url,
                                     link_preview=False), loop)
     except Exception as error:
         asyncio.run_coroutine_threadsafe(client.send_message(
