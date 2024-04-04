@@ -183,7 +183,6 @@ def it_home_spider():
             asyncio.run_coroutine_threadsafe(
                 client.send_message(conf.channel, reply_channel_msg, file=res,
                                     link_preview=False), loop)
-            break
     except Exception as error:
         asyncio.run_coroutine_threadsafe(client.send_message(
             conf.administrators,
