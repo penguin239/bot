@@ -163,10 +163,11 @@ def it_home_spider():
             intro = item.find_next('div', class_='m').text.strip()
             tag = item.find_next('div', class_='tags').find_all('a')
             for t in tag:
-                tags += f'#{t.text} '
+                tags += f'#{t.text.replace(" ", "")} '
 
             img_url = item.find_previous_sibling('a', class_='img').find('img')['data-original']
-            res = requests.get(img_url, headers=conf.headers).content
+            jpg_url = img_url.split('?')[0]
+            res = requests.get(jpg_url, headers=conf.headers).content
 
             reply_channel_msg = f'''
 **{title}**
@@ -180,8 +181,9 @@ def it_home_spider():
             '''
 
             asyncio.run_coroutine_threadsafe(
-                client.send_message(conf.channel, reply_channel_msg, file=webp2data(res),
+                client.send_message(conf.channel, reply_channel_msg, file=res,
                                     link_preview=False), loop)
+            break
     except Exception as error:
         asyncio.run_coroutine_threadsafe(client.send_message(
             conf.administrators,
