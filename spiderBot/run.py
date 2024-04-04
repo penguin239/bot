@@ -2,6 +2,8 @@ from telethon import TelegramClient, events
 from apscheduler.schedulers.background import BackgroundScheduler
 from bs4 import BeautifulSoup
 from datetime import datetime
+from PIL import Image
+from io import BytesIO
 
 import requests
 import asyncio
@@ -52,7 +54,7 @@ def log_formatter(log_content, level):
     return f'[{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}]-[{level}]：{log_content}\n'
 
 
-def spider():
+def node_spider():
     try:
         response = requests.get(conf.url, headers=conf.headers, timeout=10)
         soup = BeautifulSoup(response.text, 'lxml')
@@ -84,7 +86,7 @@ def spider():
         title = f'{datetime.now().strftime("%Y-%m-%d")}-trojan节点'
         r_title, r_url = post_article(title, content)
         reply_msg = f'''
-\ud83d\udfe2 !! **notice** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+\ud83d\udfe2 **notice** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 
 \ud83d\udd17源链接: {newUrl}
 
@@ -95,13 +97,16 @@ def spider():
 · 文章链接: {r_url}
         '''
         reply_channel_msg = f'''
-\ud83d\udfe2 !! **notice** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+\ud83d\udfe2 **每日免费节点更新** {datetime.now().strftime('%Y-%m-%d')}
 
-· 标题: {r_title}
-· 长度: {len(node_list) - 1}
-· 文章链接: {r_url}
+\ud83c\udf88 **{r_title}**
+
+\ud83c\udf97长度: {len(node_list) - 1}
+\ud83d\udd17文章链接: {r_url}
+
+标签：#节点 #免费节点
         '''
-        asyncio.run_coroutine_threadsafe(client.send_message(conf.administrators, reply_msg, link_preview=False), loop)
+        # asyncio.run_coroutine_threadsafe(client.send_message(conf.administrators, reply_msg, link_preview=False), loop)
         asyncio.run_coroutine_threadsafe(client.send_message(conf.channel, reply_channel_msg, link_preview=False), loop)
 
         with open('run.log', 'a', encoding='utf8') as f:
@@ -109,7 +114,85 @@ def spider():
     except Exception as error:
         asyncio.run_coroutine_threadsafe(client.send_message(
             conf.administrators,
-            f'\ud83d\udd34 !! **error**\n{str(error)}'
+            f'''
+\ud83d\udd34 !! **error**
+
+报错来源：节点爬虫
+报错时间：{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+报错内容：
+{error}
+            '''
+        ), loop)
+    finally:
+        models.session.close()
+
+
+def webp2data(webp_bytes):
+    image = Image.open(BytesIO(webp_bytes))
+    image_buffer = BytesIO()
+    image.save(image_buffer, format='PNG')
+    image_data = image_buffer.getvalue()
+    image_buffer.close()
+
+    return image_data
+
+
+def it_home_spider():
+    try:
+        url = 'https://www.ithome.com/blog/'
+        response = requests.get(url, headers=conf.headers)
+        soup = BeautifulSoup(response.text, 'lxml')
+
+        ul = soup.find('ul', class_='bl')
+
+        for item in ul.find_all('div', class_='c'):
+            tags = ''
+            article_time = item['data-ot']
+            a_item = item.find_next('a', class_='title')
+            title = a_item.text
+            item_url = a_item['href']
+            if 'lapin' in item_url:
+                continue
+            if models.session.query(models.NodeConf).filter(models.NodeConf.url == item_url).first():
+                break
+
+            newNodeUrl = models.NodeConf(url=item_url)
+            models.session.add(newNodeUrl)
+            models.session.commit()
+
+            intro = item.find_next('div', class_='m').text.strip()
+            tag = item.find_next('div', class_='tags').find_all('a')
+            for t in tag:
+                tags += f'#{t.text} '
+
+            img_url = item.find_previous_sibling('a', class_='img').find('img')['data-original']
+            res = requests.get(img_url, headers=conf.headers).content
+
+            reply_channel_msg = f'''
+**{title}**
+
+发布时间：{article_time}
+原文链接：{item_url}
+
+{intro}
+
+标签：{tags}
+            '''
+
+            asyncio.run_coroutine_threadsafe(
+                client.send_message(conf.channel, reply_channel_msg, file=webp2data(res),
+                                    link_preview=False), loop)
+    except Exception as error:
+        asyncio.run_coroutine_threadsafe(client.send_message(
+            conf.administrators,
+            f'''
+\ud83d\udd34 !! **error**
+
+报错来源：IT之家爬虫
+报错时间：{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+报错内容：
+{error}
+            '''
         ), loop)
     finally:
         models.session.close()
@@ -121,8 +204,10 @@ if __name__ == '__main__':
 
     loop = asyncio.get_event_loop()
     scheduler = BackgroundScheduler(timezone='Asia/Shanghai')
-    scheduler.add_job(spider, 'interval', seconds=30)
-    spider()
+    scheduler.add_job(node_spider, 'interval', hours=1)
+    scheduler.add_job(it_home_spider, 'interval', seconds=30)
+    node_spider()
+    it_home_spider()
     scheduler.start()
 
     client.run_until_disconnected()
