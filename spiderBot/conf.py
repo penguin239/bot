@@ -1,4 +1,6 @@
+# 管理员用户
 administrators = 5214901383
+# 发布频道
 channel = '@penguinSGK'
 
 api_id = 0
