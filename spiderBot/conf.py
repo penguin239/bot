@@ -3,10 +3,14 @@ administrators = 5214901383
 # 发布频道
 channel = '@penguinSGK'
 
+# 机器人id和hash，从官网获取
 api_id = 0
 api_hash = ''
+
+# 机器人token，从@botfather获取
 bot_token = ''
 
+# 是否开启代理，如果是国外机器则False
 proxy_on = True
 proxy = {
     'proxy_type': 'socks5',
@@ -19,6 +23,7 @@ proxies = {
     'https': 'http://127.0.0.1:7890',
 }
 
+# 节点url
 url = 'https://banyunxiaoxi.icu/category/vpn%e8%8a%82%e7%82%b9/'
 
 headers = {
@@ -37,6 +42,7 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0',
 }
 
+# 数据库配置
 db_conf = {
     'host': 'localhost',
     'username': 'root',
@@ -45,6 +51,7 @@ db_conf = {
     'database': 'nodehandling'
 }
 
+# telegraph配置
 j_data = {
     'short_name': 'meta',
     'author_name': 'meta',
